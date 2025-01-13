@@ -1,0 +1,158 @@
+/* -------------- Reset and Global Styles -------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0f172a;     /* Dark background */
+  color: #e2e8f0;          /* Light gray text */
+  line-height: 1.6;
+}
+
+/* -------------- Header Section -------------- */
+.header-container {
+  text-align: center;
+  padding: 3rem 0;
+  background: #1e293b;     /* Slightly lighter background */
+  border-bottom: 1px solid #334155;
+}
+
+.header-container h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #f8fafc;          /* Lighter text color */
+  margin-bottom: 0.5rem;
+}
+
+.header-container h2 {
+  font-size: 1.5rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* -------------- Main Layout -------------- */
+main {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+/* -------------- Project Cards -------------- */
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.project-card {
+  display: flex;
+  background: #1e293b;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #334155;
+  transition: transform 0.2s ease-in-out;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+}
+
+/* -------------- Project Title Section -------------- */
+.project-title {
+  flex: 0 0 300px;
+  padding: 2rem;
+  background: #2f415f;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-title h3 {
+  font-size: 1.25rem;
+  color: #f8fafc;
+  margin-bottom: 1rem;
+}
+
+/* -------------- Button Group -------------- */
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* 
+   Ensures icons and text are always on the same line.
+   white-space: nowrap prevents wrapping for very narrow widths,
+   but if a device is extremely narrow, it might still force wrapping.
+   For standard mobile widths, this keeps them side by side.
+*/
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+
+  padding: 0.4rem 0.8rem;
+  background-color: #1e293b; /* Default background */
+  border: 1px solid #334155;
+  border-radius: 6px;
+  color: #60a5fa;            /* Default text color */
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* -------------- Project Description Section -------------- */
+.project-description {
+  padding: 2rem;
+  flex: 1;
+}
+
+.project-description p {
+  color: #cbd5e1;
+  margin: 0;
+}
+
+/* -------------- Footer -------------- */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #1e293b;
+  color: #94a3b8;
+  border-top: 1px solid #334155;
+  margin-top: 3rem;
+}
+
+/* -------------- Responsive -------------- */
+/* 
+   For screens up to 768px wide (tablets, large phones, etc.), 
+   we'll make each card stack vertically to accommodate smaller widths.
+*/
+@media (max-width: 768px) {
+  .project-card {
+    flex-direction: column;
+  }
+  .project-title {
+    flex: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra rules for small phones */
+  .header-container h1 {
+    font-size: 1.8rem;
+  }
+  .header-container h2 {
+    font-size: 1.2rem;
+  }
+
+  .project-title h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+}
