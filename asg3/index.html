@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Lilian Gallon - Low Budget Minecraft - Assignment 3</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://kit.fontawesome.com/6eb9895a2e.js" crossorigin="anonymous"></script>
+    </head>
+    <body onload="(new Engine('webgl')).init()">
+        <div id="container">
+            <canvas id="webgl" width="1000" height="700" tabindex="1">
+                Please use a browser supporting "canvas"
+            </canvas>
+            <div id="overlay">
+                <div id="camera"></div>
+            </div>
+        </div>
+
+        <div id="settings">
+            <div class="settings-section">
+                <b>Rendering Options</b>
+                <div class="control-group">
+                    <label for="renderHouse">
+                        <input id="renderHouse" type="checkbox"> Render house
+                    </label>
+                    <label for="renderAxis">
+                        <input id="renderAxis" type="checkbox"> Show axis (<span style="color:#e74c3c">X</span>, <span style="color:#2ecc71">Y</span>, <span style="color:#3498db">Z</span>)
+                    </label>
+                    <label for="renderNormals">
+                        <input id="renderNormals" type="checkbox"> Render normals
+                    </label>
+                    <label for="toggleLighting">
+                        <input id="toggleLighting" type="checkbox" checked> Toggle lighting
+                    </label>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <b>Lighting Options</b>
+                <div class="lighting-controls">
+                    <div class="slider-group">
+                        <b>Diffuse</b>
+                        <div>
+                            <label>Red:</label>
+                            <input id="diffuse-red" type="range" min="0.0" max="1.0" value="0.2" step="0.01" title="Diffuse Red">
+                        </div>
+                        <div>
+                            <label>Green:</label>
+                            <input id="diffuse-green" type="range" min="0.0" max="1.0" value="0.2" step="0.01" title="Diffuse Green">
+                        </div>
+                        <div>
+                            <label>Blue:</label>
+                            <input id="diffuse-blue" type="range" min="0.0" max="1.0" value="0.2" step="0.01" title="Diffuse Blue">
+                        </div>
+                    </div>
+
+                    <div class="slider-group">
+                        <b>Specular</b>
+                        <div>
+                            <label>Red:</label>
+                            <input id="specular-red" type="range" min="0.0" max="1.0" value="1.0" step="0.01" title="Specular Red">
+                        </div>
+                        <div>
+                            <label>Green:</label>
+                            <input id="specular-green" type="range" min="0.0" max="1.0" value="1.0" step="0.01" title="Specular Green">
+                        </div>
+                        <div>
+                            <label>Blue:</label>
+                            <input id="specular-blue" type="range" min="0.0" max="1.0" value="1.0" step="0.01" title="Specular Blue">
+                        </div>
+                        <div>
+                            <label>Force:</label>
+                            <input id="specular-n" type="range" min="1" max="128" value="10" step="1" title="Specular Force">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <b>Other Options</b>
+                <div class="control-group">
+                    <label for="automateAmbientColor">
+                        <input id="automateAmbientColor" type="checkbox" checked> Automate ambient color
+                    </label>
+                    <label for="cycle">
+                        <input id="cycle" type="checkbox" checked> Day/Night cycle
+                    </label>
+                    <input id="night" type="button" value="Change daytime" disabled>
+                    <input id="light-pos" type="button" value="Change light position" disabled>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <div class="column">
+                    <b>Camera Controls</b>
+                    <div>Status: <span id="cam" style="color:green">selected</span></div>
+                    <small>Use WASD to select it</small>
+                    <ul>
+                        <li><i class="fas fa-arrows-alt"></i> Translation: WASD</li>
+                        <li><i class="fas fa-sync"></i> Rotation: AE and <i class="fas fa-mouse"></i></li>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <b>Fox Controls</b>
+                    <div>Status: <span id="fox" style="color:red">unselected</span></div>
+                    <small>Use arrows to select it</small>
+                    <ul>
+                        <li><i class="fas fa-arrows-alt"></i> Translation: <i class="fas fa-arrow-up"></i> <i class="fas fa-arrow-down"></i> <i class="fas fa-arrow-right"></i> <i class="fas fa-arrow-left"></i></li>
+                        <li><i class="fas fa-sync"></i> Rotation: <i class="fas fa-mouse"></i></li>
+                        <li><i class="fas fa-arrow-up"></i> Jump: SPACE</li>
+                        <li><i class="fas fa-running"></i> Run: SHIFT</li>
+                        <li><i class="fas fa-music"></i> Breakdance: CTRL</li>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <b>Cool NEW Features</b>
+                    <ul>
+                        <li><i class="fa-fw fas fa-lightbulb"></i> Proper specular lighting</li>
+                        <li><i class="fa-fw fas fa-sun"></i> Day/Night cycle with dynamic ambient color</li>
+                        <li><i class="fa-fw fas fa-sliders-h"></i> Customizable diffuse & specular colors</li>
+                        <li><i class="fa-fw fas fa-arrow-up"></i> Normal rendering capability</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Script includes -->
+        <script src="libs/webgl-utils.js"></script>
+        <script src="libs/webgl-debug.js"></script>
+        <script src="libs/cuon-utils.js"></script>
+        <script src="libs/cuon-matrix.js"></script>
+        <script src="libs/fpsmeter.min.js"></script>
+        <script src="data/world1.js"></script>
+        <script src="js/utils/utils.js"></script>
+        <script src="js/utils/Animation.js"></script>
+        <script src="js/shapes/Shape.js"></script>
+        <script src="js/shapes/animals/Animal.js"></script>
+        <script src="js/shapes/animals/Fox.js"></script>
+        <script src="js/shapes/basic/Sphere.js"></script>
+        <script src="js/shapes/basic/Cube.js"></script>
+        <script src="js/shapes/basic/Sky.js"></script>
+        <script src="js/shapes/basic/Floor.js"></script>
+        <script src="js/shapes/basic/Axis.js"></script>
+        <script src="js/events/Keyboard.js"></script>
+        <script src="js/events/Mouse.js"></script>
+        <script src="js/events/HtmlEvents.js"></script>
+        <script src="js/core/Lighting.js"></script>
+        <script src="js/core/Camera.js"></script>
+        <script src="js/core/GameLoop.js"></script>
+        <script src="js/core/TextureManager.js"></script>
+        <script src="js/core/Engine.js"></script>
+        <script src="js/World.js"></script>
+    </body>
+</html>
