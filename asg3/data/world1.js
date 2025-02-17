@@ -1,20 +1,10 @@
-// The WORLD1 constant holds data about blocks in a 3D scene.
-// It has two main arrays: "opaque" for opaque blocks and "transparent" for see-through blocks.
-
 const WORLD1 = {
     // Opaque textures FIRST //
-    // The "opaque" array lists all blocks that should be rendered as non-transparent (solid).
-    opaque: [
-        // Each object below specifies:
-        // x, y, z  => The 3D coordinates of the block in the scene
-        // block    => The type or texture of the block
 
-        // A wooden door (lower part) at (-4, 1, 9).
+    opaque: [
         { x: -4, y: 1, z: 9, block: 'door_wood_lower' },
-        // Another wooden door (lower part) at (-3, 1, 9).
         { x: -3, y: 1, z: 9, block: 'door_wood_lower' },
 
-        // Next, a series of blocks using 'planks_oak', forming part of a structure at various coordinates.
         { x: -9, y: 1, z: 9, block: 'planks_oak' },
         { x: -8, y: 1, z: 9, block: 'planks_oak' },
         { x: -7, y: 1, z: 9, block: 'planks_oak' },
@@ -62,7 +52,6 @@ const WORLD1 = {
         { x: -4, y: 3, z: 3, block: 'planks_oak' },
         { x: -3, y: 3, z: 3, block: 'planks_oak' },
 
-        // Blocks using 'hardened_clay_stained_white' at various coordinates, likely forming walls or details.
         { x: -9, y: 4, z: 3, block: 'hardened_clay_stained_white' },
         { x: -8, y: 4, z: 3, block: 'hardened_clay_stained_white' },
         { x: -7, y: 4, z: 3, block: 'hardened_clay_stained_white' },
@@ -209,8 +198,6 @@ const WORLD1 = {
         { x: 3, y: 4, z: 8, block: 'hardened_clay_stained_white' },
         { x: 3, y: 4, z: 9, block: 'hardened_clay_stained_white' },
 
-        // Blocks using 'hardened_clay_stained_black' at different coordinates,
-        // likely forming another structural or decorative element.
         { x: -2, y: 1, z: 11, block: 'hardened_clay_stained_black' },
         { x: -2, y: 2, z: 11, block: 'hardened_clay_stained_black' },
         { x: -2, y: 3, z: 11, block: 'hardened_clay_stained_black' },
@@ -310,9 +297,8 @@ const WORLD1 = {
     ],
 
     // Transparent at the end //
-    // The "transparent" array lists all blocks that should be rendered with transparency (e.g., leaves, glass).
+
     transparent: [
-        // Leaves blocks ('leaves_big_oak') at the specified positions, typically for foliage.
         { x: -2, y: 7, z: 6, block: 'leaves_big_oak' },
         { x: -2, y: 7, z: 7, block: 'leaves_big_oak' },
         { x: -3, y: 5, z: 4, block: 'leaves_big_oak' },
@@ -335,7 +321,6 @@ const WORLD1 = {
         { x: -8, y: 5, z: 9, block: 'leaves_big_oak' },
         { x: -9, y: 5, z: 9, block: 'leaves_big_oak' },
 
-        // Glass blocks ('glass_black'), providing transparency at various positions (like windows or openings).
         { x: -1, y: 1, z: 2, block: 'glass_black' },
         { x: -1, y: 2, z: 2, block: 'glass_black' },
         { x: -1, y: 3, z: 2, block: 'glass_black' },
@@ -403,7 +388,6 @@ const WORLD1 = {
         { x: -1, y: 8, z: 4, block: 'glass_black' },
         { x: -1, y: 8, z: 3, block: 'glass_black' },
 
-        // Upper part of the wooden door at (-4, 2, 9) and (-3, 2, 9).
         { x: -4, y: 2, z: 9, block: 'door_wood_upper' },
         { x: -3, y: 2, z: 9, block: 'door_wood_upper' },
     ]

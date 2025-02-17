@@ -1,69 +1,55 @@
 class Keyboard {
 
     /**
-     * Constructs a Keyboard object to track key states.
-     * You must call registerEvents() to bind to the canvas events.
+     * You should call registerEvents() to finish the initialization.
      */
     constructor () {
-        // A Map to store whether a key is currently pressed (true) or not (false).
-        // Key: keyCode (int), Value: boolean
         this.keys = new Map();
-
-        // Flags to track one-time states (just pressed, just released).
-        this.jUp = false;    // True when a key was just released.
-        this.jDown = false;  // True when a key was just pressed.
+        this.jUp = false;
+        this.jDown = false;
     }
 
     /**
-     * Binds 'keydown' and 'keyup' events to the canvas element with the given ID.
+     * It registers all the events.
      *
-     * @param {string} canvasId - The ID of the canvas in which we'll capture keyboard events.
+     * @param {string} canvasId the canvas' id
      */
     registerEvents (canvasId) {
-        // When a key is pressed in the canvas, set the key state to true.
         getElement(canvasId).onkeydown = e => {
             this.keys.set(e.keyCode, true);
 
-            // Mark that a key has just been pressed (jDown).
             this.jUp = false;
             this.jDown = true;
 
-            // Prevent default browser behavior (e.g., scrolling with arrow keys).
             e.preventDefault();
-        };
+        }
 
-        // When a key is released in the canvas, set the key state to false.
         getElement(canvasId).onkeyup = e => {
             this.keys.set(e.keyCode, false);
 
-            // Mark that a key has just been released (jUp).
             this.jUp = true;
             this.jDown = false;
 
-            // Prevent default browser behavior.
             e.preventDefault();
-        };
+        }
     }
 
     /**
-     * Checks if the specified key is currently being held down.
-     * @param {int} keyCode - The numerical code of the key (e.g., Keyboard.K_W).
-     * @returns {boolean} True if the key is down, otherwise false.
+     * Returns true if the specified key is down.
+     * @param {int} keyCode
      */
     isDown (keyCode) {
-        // If not defined yet, return false; otherwise return the stored boolean.
-        return this.keys.get(keyCode) === undefined ? false : this.keys.get(keyCode);
+        return this.keys.get(keyCode) == undefined ? false : this.keys.get(keyCode);
     }
 
     /**
-     * Checks if a key was just released.
-     * - Returns true if it was just released since the last check.
-     * - Immediately sets jUp back to false, so it only returns true once.
-     * @returns {boolean} True if a key has just been released, false otherwise.
+     * Returns true if a key has been released.
+     * It will be turned to false once that this method has been called.
+     * So you should only call it once.
      */
     justUp () {
         if (this.jUp) {
-            this.jUp = false;
+            this.jUp = false
             return true;
         } else {
             return false;
@@ -71,14 +57,13 @@ class Keyboard {
     }
 
     /**
-     * Checks if a key was just pressed.
-     * - Returns true if it was just pressed since the last check.
-     * - Immediately sets jDown back to false, so it only returns true once.
-     * @returns {boolean} True if a key has just been pressed, false otherwise.
+     * Returns true if a key has been pressed.
+     * It will be turned to false once that this method has been called.
+     * So you should only call it once.
      */
     justDown () {
         if (this.jDown) {
-            this.jDown = false;
+            this.jDown = false
             return true;
         } else {
             return false;
@@ -86,7 +71,8 @@ class Keyboard {
     }
 }
 
-// Mappings for commonly used keys
+// Mappings
+
 Keyboard.K_LEFT = 37;
 Keyboard.K_UP = 38;
 Keyboard.K_RIGHT = 39;
