@@ -1,0 +1,107 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f8;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+canvas {
+    display: block;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 2px solid #0056b3;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h1, h3 {
+    color: #0056b3;
+    text-align: center;
+}
+
+p {
+    margin: 10px 0;
+}
+
+.buttons,
+.sliders {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.buttons button,
+.sliders button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buttons button:hover,
+.sliders button:hover {
+    background-color: #0056b3;
+}
+
+.sliders input[type="range"] {
+    width: 300px; /* Increased width for better control */
+    cursor: pointer;
+}
+
+input[type="range"] {
+    -webkit-appearance: none; /* Overrides default appearance */
+    width: 100%; /* Specific width adjustments can be made in individual classes */
+    height: 8px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+input[type="range"]:hover {
+    opacity: 1; /* Fully visible on mouse-over */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Removes default webkit styles */
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #007BFF;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #007BFF;
+    cursor: pointer;
+}
+
+/* Enhancing specific text elements */
+label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Adding some styling to the form elements for better alignment and visibility */
+.form-element {
+    margin-bottom: 15px;
+}
+
+/* Footer styling for credits or additional notes */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.8em;
+    color: #666;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+}
